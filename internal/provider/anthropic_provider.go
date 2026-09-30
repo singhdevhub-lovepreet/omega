@@ -25,10 +25,8 @@ type AnthropicProvider struct {
 
 func NewAnthropicProvider(model, apiKey string) *AnthropicProvider {
 	return &AnthropicProvider{
-		model:  model,
-		apiKey: apiKey,
-		// Timeout bounds a hung connection; ctx handles user/budget cancel.
-		// Generous because a long tool-heavy turn can legitimately take a while.
+		model:      model,
+		apiKey:     apiKey,
 		httpClient: &http.Client{Timeout: 5 * time.Minute},
 	}
 }
@@ -234,3 +232,5 @@ func (ap *AnthropicProvider) errorFromResponse(resp *http.Response) error {
 	}
 	return perr
 }
+
+var _ Provider = (*AnthropicProvider)(nil)
