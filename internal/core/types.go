@@ -5,8 +5,8 @@ import "encoding/json"
 type Role string
 
 const (
-	RoleAdmin Role = "admin"
-	RoleUser  Role = "user"
+	RoleAssistant Role = "assistant"
+	RoleUser      Role = "user"
 )
 
 type StopReason string
